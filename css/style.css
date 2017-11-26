@@ -1,0 +1,56 @@
+body {
+    font-family: 'Baloo Paaji', cursive;
+    font-size: 25px;
+    background-color: #324d5b;
+}
+
+.btn {
+    color: #ffffff;
+    background-color: #e2574c;
+    border-radius: 8%;
+    height: 57px;
+    width: 57px;
+    font-size: larger;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border-collapse: collapse;
+}
+
+.eq-btn {
+    background-color: #26a6d1;
+    width: auto;
+}
+
+#calc-body {
+    background-color: #efefef;
+    width: 290px;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.results {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #324d5b;
+    color: #aeb5ba;
+    width: 242px;
+    height: 50px;
+    font-size: larger;
+    text-align: right;
+    padding: 15px 6px 0px 6px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+table {
+    padding-top: 15px;
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-bottom: 15px;
+}
+
+.model {
+    text-align: left;
+    margin-left: 10px;
+    color: #31343f;
+}
