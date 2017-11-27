@@ -1,5 +1,5 @@
 body {
-    font-family: 'Baloo Paaji', cursive;
+    font-family: 'Baloo Paaji', cursive ,sans-serif;
     font-size: 25px;
     background-color: #324d5b;
 }
@@ -14,7 +14,6 @@ body {
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
-    border-collapse: collapse;
 }
 
 .eq-btn {

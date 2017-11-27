@@ -1,67 +1,102 @@
-(function () {
+var numbersAndSybols = {
+    'zero': {
+        'dom': document.getElementById('zero'),
+        'num': 0
+    },
+    'one': {
+        'dom': document.getElementById('one'),
+        'num': 1
+    },
+    'two': {
+        'dom': document.getElementById('two'),
+        'num': 2
+    },
+    'three': {
+        'dom': document.getElementById('three'),
+        'num': 3
+    },
+    'four': {
+        'dom':document.getElementById('four'),
+        'num': 4
+    },
+    'five': {
+        'dom': document.getElementById('five'),
+        'num': 5
+    },
+    'six': {
+        'dom': document.getElementById('six'),
+        'num': 6
+    },
+    'seven': {
+        'dom': document.getElementById('seven'),
+        'num': 7
+    },
+    'eight': {
+        'dom': document.getElementById('eight'),
+        'num': 8
+    },
+    'nine': {
+        'dom': document.getElementById('nine'),
+        'num': 9
+    },
+    'period': {
+        'dom': document.getElementById('period'),
+        'equ': '.'
+    },
+    'left-brace': {
+        'dom': document.getElementById('left-brace'),
+        'equ': '('
+    },
+    'right-brace': {
+        'dom': document.getElementById('right-brace'),
+        'equ': ')'
+    },
+    'divide': {
+        'dom': document.getElementById('divide'),
+        'equ': '/'
+    },
+    'by': {
+        'dom': document.getElementById('by'),
+        'equ': '*'
+    },
+    'minus': {
+        'dom': document.getElementById('minus'),
+        'equ': '-'
+    },
+    'plus': {
+        'dom': document.getElementById('plus'),
+        'equ': '+'
+    },
+    'clear': {
+        'dom': document.getElementById('clear'),
+    },
+    'equal': {
+        'dom': document.getElementById('equal')
+    },
+};
 
-    var equation = '';
-    // Getting IDs of the buttons from the DOM
-    var ids = [];
-    var buttons = document.querySelectorAll('.btn');
-    buttons.forEach(function (element) {
-        ids.push(element["id"]);
-    });
-    // console.log(ids);
-    /** ids
-    0: "left-brace"
-    1: "right-brace"
-    2: "divide"
-    3: "clear"
-    4: "num7"
-    5: "num8"
-    6: "num9"
-    7: "by"
-    8: "num4"
-    9: "num5"
-    10: "num6"
-    11: "minus"
-    12: "num1"
-    13: "num2"
-    14: "num3"
-    15: "plus"
-    16: "num1"
-    17: "period"
-    18: "equal"
-    **/
+// Clear and Execute Keys
+numbersAndSybols['clear']['dom'].onclick = clearOperation;
+numbersAndSybols['equal']['dom'].onclick = calculatIt;
 
-    // assigning id to value
-    var numbersAndSybols = {
-        'num1': '1',
-        'num2': '2',
-        'num3': '3',
-        'num4': '4',
-        'num5': '5',
-        'num6': '6',
-        'num7': '7',
-        'num8': '8',
-        'num9': '9',
-        'period': '.',
-        'left-brace': '(',
-        'right-brace': ')',
-        'divide': '/',
-        'by': '*',
-        'minus': '-',
-        'plus': '+',
-        'clear' : function(){ /** TODO the clear function */},
-    }
 
-    function formTheEquation(args) {
-        let numberSTR = '';
+// for (var item in numbersAndSybols) {
+//     numbersAndSybols[item]['dom'].onclick = log(item)
+// }
 
-    }
-    // I need to make something to give value for each key
-    // and pass values as arguments to the function doMath
+function log(event) {
+    console.log(numbersAndSybols[item]['num']);
+}
 
-    function doMath(args) {
+function formTheEquation(args) {
+    let numberSTR = '';
+    // TODO making this function take every click and stores the value
+}
 
-    }
+function clearOperation() {
+    console.log("Clearing");
+}
 
-    // console.log(doMath(33, '+', 44));
-
-})();
+function calculatIt() {
+    console.log("Calculating");
+}
