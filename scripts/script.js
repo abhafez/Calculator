@@ -1,72 +1,7 @@
-var numbersAndSybols = {
-    'zero': {
-        'dom': document.getElementById('zero'),
-        'num': 0
-    },
-    'one': {
-        'dom': document.getElementById('one'),
-        'num': 1
-    },
-    'two': {
-        'dom': document.getElementById('two'),
-        'num': 2
-    },
-    'three': {
-        'dom': document.getElementById('three'),
-        'num': 3
-    },
-    'four': {
-        'dom':document.getElementById('four'),
-        'num': 4
-    },
-    'five': {
-        'dom': document.getElementById('five'),
-        'num': 5
-    },
-    'six': {
-        'dom': document.getElementById('six'),
-        'num': 6
-    },
-    'seven': {
-        'dom': document.getElementById('seven'),
-        'num': 7
-    },
-    'eight': {
-        'dom': document.getElementById('eight'),
-        'num': 8
-    },
-    'nine': {
-        'dom': document.getElementById('nine'),
-        'num': 9
-    },
-    'period': {
-        'dom': document.getElementById('period'),
-        'equ': '.'
-    },
-    'left-brace': {
-        'dom': document.getElementById('left-brace'),
-        'equ': '('
-    },
-    'right-brace': {
-        'dom': document.getElementById('right-brace'),
-        'equ': ')'
-    },
-    'divide': {
-        'dom': document.getElementById('divide'),
-        'equ': '/'
-    },
-    'by': {
-        'dom': document.getElementById('by'),
-        'equ': '*'
-    },
-    'minus': {
-        'dom': document.getElementById('minus'),
-        'equ': '-'
-    },
-    'plus': {
-        'dom': document.getElementById('plus'),
-        'equ': '+'
-    },
+var equation = '';
+const ERRORMESSAGE = "EsRR";
+var viewResult = document.getElementById('results');
+var specialKeys = {
     'clear': {
         'dom': document.getElementById('clear'),
     },
@@ -76,27 +11,45 @@ var numbersAndSybols = {
 };
 
 // Clear and Execute Keys
-numbersAndSybols['clear']['dom'].onclick = clearOperation;
-numbersAndSybols['equal']['dom'].onclick = calculatIt;
+specialKeys.clear.dom.onclick = ClearOperation;
+specialKeys.equal.dom.onclick = CalculatIt;
 
+var elements = document.querySelectorAll('div.btn');
 
-// for (var item in numbersAndSybols) {
-//     numbersAndSybols[item]['dom'].onclick = log(item)
-// }
-
-function log(event) {
-    console.log(numbersAndSybols[item]['num']);
+// Building the eventListener
+for (var i = 0; i < elements.length; i++) {
+    if (i === 3 || i === 18) continue; // Clear and equal
+    else elements[i].addEventListener("click", BindClick(i));
 }
 
-function formTheEquation(args) {
-    let numberSTR = '';
-    // TODO making this function take every click and stores the value
+function BindClick(element) {
+    return function(){
+        BuildingEquation(elements[element].innerHTML);
+    };
+} // end of the eventListener
+
+function BuildingEquation(digit) {
+    equation += digit;
+    console.log(equation);
 }
 
-function clearOperation() {
+function ClearOperation() {
     console.log("Clearing");
+    // To restart steady state. assign empty string.
+    equation = '';
+    viewResult.innerHTML = '0';
+
 }
 
-function calculatIt() {
+function CalculatIt() {
     console.log("Calculating");
+    try {
+        viewResult.innerHTML = eval(equation);
+    } catch (SyntaxError) {
+        (function(){
+            viewResult.innerHTML = ERRORMESSAGE;
+        })();
+        throw ERRORMESSAGE;
+    }
+    equation = '';    
 }

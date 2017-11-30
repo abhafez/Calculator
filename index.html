@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Paaji">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,73 +16,73 @@
                 <p>
                     <i class="fa fa-free-code-camp" aria-hidden="true"></i> FCC-2017</p>
             </div>
-            <table>
-                <div class="results">
-                    0
-                </div>
-                <div id="numbers">
+            <div id="results" class="results">
+                0
+            </div>
+            <table id="keys">
+                <div>
                     <tr>
                         <td>
-                            <div id="left-brace" class="btn">(</div>
+                            <div id="left-brace" class="btn" name="key"> (</div>
                         </td>
                         <td>
-                            <div id="right-brace" class="btn">)</div>
+                            <div id="right-brace" class="btn" name="key"> ) </div>
                         </td>
                         <td>
-                            <div id="divide" class="btn">/</div>
+                            <div id="divide" class="btn" name="key"> / </div>
                         </td>
                         <td>
-                            <div id="clear" class="btn">C</div>
+                            <div id="clear" class="btn" name="key">C</div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div id="seven" class="btn">7</div>
+                            <div id="seven" class="btn" name="key">7</div>
                         </td>
                         <td>
-                            <div id="eight" class="btn">8</div>
+                            <div id="eight" class="btn" name="key">8</div>
                         </td>
                         <td>
-                            <div id="nine" class="btn">9</div>
+                            <div id="nine" class="btn" name="key">9</div>
                         </td>
                         <td>
-                            <div id="by" class="btn">*</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div id="four" class="btn">4</div>
-                        </td>
-                        <td>
-                            <div id="five" class="btn">5</div>
-                        </td>
-                        <td>
-                            <div id="six" class="btn">6</div>
-                        </td>
-                        <td>
-                            <div id="minus" class="btn">-</div>
+                            <div id="by" class="btn" name="key"> * </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div id="one" class="btn">1</div>
+                            <div id="four" class="btn" name="key">4</div>
                         </td>
                         <td>
-                            <div id="two" class="btn">2</div>
+                            <div id="five" class="btn" name="key">5</div>
                         </td>
                         <td>
-                            <div id="three" class="btn">3</div>
+                            <div id="six" class="btn" name="key">6</div>
                         </td>
                         <td>
-                            <div id="plus" class="btn">+</div>
+                            <div id="minus" class="btn" name="key"> - </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div id="zero" class="btn">0</div>
+                            <div id="one" class="btn" name="key">1</div>
                         </td>
                         <td>
-                            <div id="period" class="btn">.</div>
+                            <div id="two" class="btn" name="key">2</div>
+                        </td>
+                        <td>
+                            <div id="three" class="btn" name="key">3</div>
+                        </td>
+                        <td>
+                            <div id="plus" class="btn" name="key"> + </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="zero" class="btn" name="key">0</div>
+                        </td>
+                        <td>
+                            <div id="period" class="btn" name="key">.</div>
                         </td>
                         <td colspan="2">
                             <div id="equal" class="btn eq-btn">=</div>
@@ -92,7 +93,7 @@
         </div>
     </div>
 
-    <script src="scripts/script.js" charset="utf-8"></script>
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>
