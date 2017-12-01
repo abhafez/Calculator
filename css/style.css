@@ -24,16 +24,18 @@ body {
 
 #calc-body {
     background-color: #efefef;
-    width: 290px;
+    width: 295px;
     text-align: center;
     padding-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .screen {
     font-family: 'Orbitron', sans-serif;
     background-color: #324d5b;
     color: #aeb5ba;
-    width: 242px;
+    width: 245px;
     height: 55px;
     font-size: larger;
     text-align: right;

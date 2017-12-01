@@ -1,78 +1,87 @@
-var solution = '',
-    lastAnswer = 0,
-    equation = '',
-    lastEquation = '';
-var viewEquation = document.getElementById('equation');
-var viewResult = document.getElementById('results');
-const DIGITLIMIT = 'Digit Limit Met';
-const ERRORMESSAGE = 'Math ERR';
-const specialKeys = {
-    'clear': {
-        'dom': document.getElementById('clear'),
-    },
-    'equal': {
-        'dom': document.getElementById('equal')
-    },
-};
+(function () {
+    var num = '',
+        opSybol = '',
+        lastAnswer = 0,
+        equation = '',
+        viewEquation = document.getElementById('equation'),
+        viewResult = document.getElementById('results');
+    const   DIGITLIMIT = 'Digit Limit Met',
+            ERRORMESSAGE = 'Math ERR',
+            CLEAR = document.getElementById('clear'),
+            EQUAL = document.getElementById('equal'),
+            elements = document.querySelectorAll('div.btn');
+    // Clear and Execute Keys
+    CLEAR.onclick = ClearSum;
+    EQUAL.onclick = CalculatIt;
 
-// Clear and Execute Keys
-specialKeys.clear.dom.onclick = ClearOperation;
-specialKeys.equal.dom.onclick = CalculatIt;
 
-var elements = document.querySelectorAll('div.btn');
+    // Building the eventListener
+    (function listenToMouseClicks() {
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].addEventListener("click", mouseClick(i));
+        }
 
-// Building the eventListener
-for (var i = 0; i < elements.length; i++) {
-    elements[i].addEventListener("click", mouseClick(i));
-}
+        function mouseClick(element) {
+            return function () {
+                BuildingEquation(elements[element].innerHTML);
+            };
+        }
+    })();
 
-function mouseClick(element) {
-    return function () {
-        BuildingEquation(elements[element].innerHTML);
-    };
-} // end of the eventListener
 
-function BuildingEquation(digit) {
-    // Next if condition to use last answer and make new operation.
-    if (Number(digit) || digit === '.' || digit === '0') {
-        equation += digit;
-    } else {
-        equation += digit;
+    function BuildingEquation(inp) {
+        // Next if condition to use last answer and make new operation.
+        if (Number(inp) || inp === '.' || inp === '0') {
+            num += inp;
+            if (checkAnswer(num)) { 
+                viewResult.innerText = DIGITLIMIT;
+                equation = '';
+            } else {
+                viewResult.innerText = num;
+            }
+        } else {
+            opSybol = inp;
+            viewResult.innerText = opSybol;
+            num = '';
+        }
+        equation += inp;
+        viewEquation.innerText = equation;
     }
-    if (checkEquation(equation)) {
-        equation = 'Digit Limit Met';
-    };
-    viewEquation.innerText = equation;
-    viewResult.innerText = equation;
-}
 
-function ClearOperation() {
-    // To restart steady state. assign empty string.
-    equation = '';
-    viewResult.innerText = '0';
-    viewEquation.innerText = '0';
-    lastAnswer = 0;
-}
 
-function CalculatIt() {
-    // To view last answer if user presses equal before inserting new calculation.
-
-    try {
-        lastAnswer = eval(equation);
-        viewResult.innerText = lastAnswer;
-    } catch (SyntaxError) { // Eval error view ERROR message
-        (function () {
-            viewResult.innerText = ERRORMESSAGE;
-        })();
+    function CalculatIt() {
+        try {
+            lastAnswer = eval(equation);
+            num = '';
+            checkAnswer(String(lastAnswer)) ? 
+            viewResult.innerText = DIGITLIMIT : viewResult.innerText = lastAnswer;
+        } catch (SyntaxError) { // Eval error view ERROR message
+            (function () {
+                viewResult.innerText = ERRORMESSAGE;
+                num = '';
+            })();
+        }
+        // Viewing full equation
+        let fullEquation = equation + '=' + lastAnswer;
+        checkEquation(fullEquation) ?
+        viewResult.innerText = DIGITLIMIT : viewEquation.innerText = fullEquation
+        equation = '';
     }
-    // Viewing full equation
-    viewEquation.innerText = equation + '=' + lastAnswer;
-    equation = '';
 
-}
 
-function checkEquation(equation) {
-    if (viewResult.innerText.length > 9 || viewEquation.innerText.length > 241) {
-        return true;
+    function ClearSum() {
+        // To restart steady state. assign empty string.
+        equation = '';
+        viewResult.innerText = '0';
+        viewEquation.innerText = '0';
+        lastAnswer = 0;
     }
-}
+
+    function checkAnswer(ans) {
+        if (ans.length > 10) return true;
+    }
+
+    function checkEquation(equ) {
+        if (equ.length > 23) return true;
+    }
+})();
