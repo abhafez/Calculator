@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Paaji">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>CalculatIt</title>
 </head>
@@ -16,23 +17,24 @@
                 <p>
                     <i class="fa fa-free-code-camp" aria-hidden="true"></i> FCC-2017</p>
             </div>
-            <div id="results" class="results">
-                0
+            <div id="screen" class="screen">
+                <div id="results" class="animated results flash">0</div>
+                <div id="equation" class="equation">0</div>
             </div>
             <table id="keys">
                 <div>
                     <tr>
                         <td>
-                            <div id="left-brace" class="btn" name="key"> (</div>
+                            <div id="left-brace" class="btn" name="key">(</div>
                         </td>
                         <td>
-                            <div id="right-brace" class="btn" name="key"> ) </div>
+                            <div id="right-brace" class="btn" name="key">)</div>
                         </td>
                         <td>
-                            <div id="divide" class="btn" name="key"> / </div>
+                            <div id="divide" class="btn" name="key">/</div>
                         </td>
                         <td>
-                            <div id="clear" class="btn" name="key">C</div>
+                            <div id="clear" class="op-key" name="key">C</div>
                         </td>
                     </tr>
                     <tr>
@@ -46,7 +48,7 @@
                             <div id="nine" class="btn" name="key">9</div>
                         </td>
                         <td>
-                            <div id="by" class="btn" name="key"> * </div>
+                            <div id="by" class="btn" name="key">*</div>
                         </td>
                     </tr>
                     <tr>
@@ -60,7 +62,7 @@
                             <div id="six" class="btn" name="key">6</div>
                         </td>
                         <td>
-                            <div id="minus" class="btn" name="key"> - </div>
+                            <div id="minus" class="btn" name="key">-</div>
                         </td>
                     </tr>
                     <tr>
@@ -74,7 +76,7 @@
                             <div id="three" class="btn" name="key">3</div>
                         </td>
                         <td>
-                            <div id="plus" class="btn" name="key"> + </div>
+                            <div id="plus" class="btn" name="key">+</div>
                         </td>
                     </tr>
                     <tr>
@@ -85,7 +87,7 @@
                             <div id="period" class="btn" name="key">.</div>
                         </td>
                         <td colspan="2">
-                            <div id="equal" class="btn eq-btn">=</div>
+                            <div id="equal" class="op-key eq-btn">=</div>
                         </td>
                     </tr>
                 </div>

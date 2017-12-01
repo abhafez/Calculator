@@ -1,7 +1,12 @@
-var equation = '';
-const ERRORMESSAGE = "EsRR";
+var solution = '',
+    lastAnswer = 0,
+    equation = '',
+    lastEquation = '';
+var viewEquation = document.getElementById('equation');
 var viewResult = document.getElementById('results');
-var specialKeys = {
+const DIGITLIMIT = 'Digit Limit Met';
+const ERRORMESSAGE = 'Math ERR';
+const specialKeys = {
     'clear': {
         'dom': document.getElementById('clear'),
     },
@@ -18,38 +23,56 @@ var elements = document.querySelectorAll('div.btn');
 
 // Building the eventListener
 for (var i = 0; i < elements.length; i++) {
-    if (i === 3 || i === 18) continue; // Clear and equal
-    else elements[i].addEventListener("click", BindClick(i));
+    elements[i].addEventListener("click", mouseClick(i));
 }
 
-function BindClick(element) {
-    return function(){
+function mouseClick(element) {
+    return function () {
         BuildingEquation(elements[element].innerHTML);
     };
 } // end of the eventListener
 
 function BuildingEquation(digit) {
-    equation += digit;
-    console.log(equation);
+    // Next if condition to use last answer and make new operation.
+    if (Number(digit) || digit === '.' || digit === '0') {
+        equation += digit;
+    } else {
+        equation += digit;
+    }
+    if (checkEquation(equation)) {
+        equation = 'Digit Limit Met';
+    };
+    viewEquation.innerText = equation;
+    viewResult.innerText = equation;
 }
 
 function ClearOperation() {
-    console.log("Clearing");
     // To restart steady state. assign empty string.
     equation = '';
-    viewResult.innerHTML = '0';
-
+    viewResult.innerText = '0';
+    viewEquation.innerText = '0';
+    lastAnswer = 0;
 }
 
 function CalculatIt() {
-    console.log("Calculating");
+    // To view last answer if user presses equal before inserting new calculation.
+
     try {
-        viewResult.innerHTML = eval(equation);
-    } catch (SyntaxError) {
-        (function(){
-            viewResult.innerHTML = ERRORMESSAGE;
+        lastAnswer = eval(equation);
+        viewResult.innerText = lastAnswer;
+    } catch (SyntaxError) { // Eval error view ERROR message
+        (function () {
+            viewResult.innerText = ERRORMESSAGE;
         })();
-        throw ERRORMESSAGE;
     }
-    equation = '';    
+    // Viewing full equation
+    viewEquation.innerText = equation + '=' + lastAnswer;
+    equation = '';
+
+}
+
+function checkEquation(equation) {
+    if (viewResult.innerText.length > 9 || viewEquation.innerText.length > 241) {
+        return true;
+    }
 }

@@ -4,7 +4,7 @@ body {
     background-color: #324d5b;
 }
 
-.btn {
+.btn, .op-key {
     color: #ffffff;
     background-color: #e2574c;
     border-radius: 8%;
@@ -15,6 +15,7 @@ body {
     vertical-align: middle;
     cursor: pointer;
 }
+
 
 .eq-btn {
     background-color: #26a6d1;
@@ -28,12 +29,12 @@ body {
     padding-top: 8px;
 }
 
-.results {
+.screen {
     font-family: 'Orbitron', sans-serif;
     background-color: #324d5b;
     color: #aeb5ba;
     width: 242px;
-    height: 50px;
+    height: 55px;
     font-size: larger;
     text-align: right;
     padding: 15px 6px 0px 6px;
@@ -52,4 +53,8 @@ table {
     text-align: left;
     margin-left: 10px;
     color: #31343f;
+}
+
+#equation {
+    font-size: small;
 }
