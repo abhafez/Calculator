@@ -45,10 +45,7 @@ body {
 }
 
 table {
-    padding-top: 15px;
-    padding-left: 23px;
-    padding-right: 23px;
-    padding-bottom: 15px;
+    padding: 15px 23px 15px 23px;
 }
 
 .model {

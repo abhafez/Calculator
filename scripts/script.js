@@ -3,17 +3,17 @@
         opSybol = '',
         lastAnswer = 0,
         equation = '',
-        viewEquation = document.getElementById('equation'),
-        viewResult = document.getElementById('results');
+        displayEquation = document.getElementById('equation'),
+        displayResult = document.getElementById('results');
     const   DIGITLIMIT = 'Digit Limit Met',
             ERRORMESSAGE = 'Math ERR',
             CLEAR = document.getElementById('clear'),
             EQUAL = document.getElementById('equal'),
             elements = document.querySelectorAll('div.btn');
+    
     // Clear and Execute Keys
     CLEAR.onclick = ClearSum;
-    EQUAL.onclick = CalculatIt;
-
+    EQUAL.onclick = CalculateIt;
 
     // Building the eventListener
     (function listenToMouseClicks() {
@@ -28,57 +28,64 @@
         }
     })();
 
-
     function BuildingEquation(inp) {
         // Next if condition to use last answer and make new operation.
         if (Number(inp) || inp === '.' || inp === '0') {
             num += inp;
-            if (checkAnswer(num)) { 
-                viewResult.innerText = DIGITLIMIT;
-                equation = '';
+            if (checkAnswerLength(num)) { 
+                num = '';
+                displayResult.innerText = DIGITLIMIT;
+                displayEquation.innerText = DIGITLIMIT;
+                lastAnswer = '';
+                equation ='';  
+                inp = '';
             } else {
-                viewResult.innerText = num;
+                displayResult.innerText = num;
             }
         } else {
             opSybol = inp;
-            viewResult.innerText = opSybol;
+            displayResult.innerText = opSybol;
             num = '';
         }
         equation += inp;
-        viewEquation.innerText = equation;
+        displayEquation.innerText = equation;
     }
 
-
-    function CalculatIt() {
+    function CalculateIt() {
         try {
             lastAnswer = eval(equation);
             num = '';
-            checkAnswer(String(lastAnswer)) ? 
-            viewResult.innerText = DIGITLIMIT : viewResult.innerText = lastAnswer;
+            displayResult.innerText = checkAnswerLength(String(lastAnswer)) ? DIGITLIMIT : lastAnswer;
         } catch (SyntaxError) { // Eval error view ERROR message
             (function () {
-                viewResult.innerText = ERRORMESSAGE;
+                displayResult.innerText = ERRORMESSAGE;
                 num = '';
             })();
         }
+        if(lastAnswer === undefined){
+            displayResult.innerText = "No Input!"
+            displayEquation.innerHTML = "Make some equation"
+        }
+        displayEquation.innerText = checkEquation(fullEquation) ? DIGITLIMIT : fullEquation;
         // Viewing full equation
         let fullEquation = equation + '=' + lastAnswer;
-        checkEquation(fullEquation) ?
-        viewResult.innerText = DIGITLIMIT : viewEquation.innerText = fullEquation
+        fullEquation = ''; 
         equation = '';
+        lastAnswer = 'ERR';
     }
 
 
     function ClearSum() {
         // To restart steady state. assign empty string.
         equation = '';
-        viewResult.innerText = '0';
-        viewEquation.innerText = '0';
+        inp = '';
+        displayResult.innerText = '0';
+        displayEquation.innerText = '0';
         lastAnswer = 0;
     }
 
-    function checkAnswer(ans) {
-        if (ans.length > 10) return true;
+    function checkAnswerLength(ans) {
+        if (ans.length > 9) return true;
     }
 
     function checkEquation(equ) {
