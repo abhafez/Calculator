@@ -3,7 +3,7 @@ this project is one of freecodecamp front-end program advanced projects which te
 In this project I used vanilla javascript as a challenge and no use of any library.
 
 ## eval() function
-this function saved alot of time with it calculates a string and return the results.
+This function saved alot of time. It calculates a string and return the results.
 
 e.g : var x = "5+5"
 
